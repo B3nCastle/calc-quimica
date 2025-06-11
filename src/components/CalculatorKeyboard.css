@@ -1,0 +1,121 @@
+.calculator-keyboard {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.calculator-keyboard h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.keyboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.keyboard-key {
+  flex: 1;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para diferentes tipos de teclas */
+.keyboard-key.number {
+  background: #ffffff;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+.keyboard-key.number:hover {
+  background: #e9ecef;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.keyboard-key.clear {
+  background: #dc3545;
+  color: white;
+}
+
+.keyboard-key.clear:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+.keyboard-key.delete {
+  background: #fd7e14;
+  color: white;
+}
+
+.keyboard-key.delete:hover {
+  background: #e8680e;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(253, 126, 20, 0.3);
+}
+
+.keyboard-key.function {
+  background: #6f42c1;
+  color: white;
+}
+
+.keyboard-key.function:hover {
+  background: #5a359a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(111, 66, 193, 0.3);
+}
+
+.keyboard-key:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.keyboard-instructions {
+  margin-top: 15px;
+  text-align: center;
+  color: #6c757d;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .calculator-keyboard {
+    margin: 15px 0;
+    padding: 15px;
+  }
+  
+  .keyboard-key {
+    height: 45px;
+    font-size: 1.1rem;
+    min-width: 50px;
+  }
+  
+  .keyboard-grid {
+    max-width: 280px;
+  }
+} 

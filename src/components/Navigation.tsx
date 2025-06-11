@@ -1,67 +1,78 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { UNIT_GROUPS } from '../constants/units';
+import './Navigation.css';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
 
-  // Iconos de Bootstrap para cada magnitud - estilo formal
+  // Iconos para cada magnitud
   const magnitudeIcons: Record<string, string> = {
-    longitud: 'bi-rulers',
-    masa: 'bi-scales',
-    tiempo: 'bi-clock',
-    volumen: 'bi-droplet',
-    densidad: 'bi-circle-half',
-    presion: 'bi-speedometer2',
-    fuerza: 'bi-arrow-up-right',
-    energia: 'bi-lightning'
+    longitud: '📏',
+    masa: '⚖️',
+    tiempo: '⏱️',
+    volumen: '🧪',
+    densidad: '🔬',
+    presion: '🌡️',
+    fuerza: '💪',
+    energia: '⚡'
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
-      <div className="container-fluid">
-        <Link to="/" className="navbar-brand fw-bold">
-          <i className="bi bi-calculator me-2"></i>
-          SI Calculator
+    <nav className="navigation">
+      <div className="nav-container">
+        <Link to="/" className="nav-logo">
+          <span className="logo-icon">🧮</span>
+          <span className="logo-text">SI Calculator</span>
         </Link>
         
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link 
-                to="/" 
-                className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
-              >
-                <i className="bi bi-house me-1"></i>
-                Inicio
-              </Link>
-            </li>
+        <div className="nav-links">
+          <Link 
+            to="/" 
+            className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+          >
+            🏠 Inicio
+          </Link>
+          
+          {Object.entries(UNIT_GROUPS).map(([key, group]) => (
+            <Link
+              key={key}
+              to={`/converter/${key}`}
+              className={`nav-link ${location.pathname === `/converter/${key}` ? 'active' : ''}`}
+              title={`Conversión de ${group.name}`}
+            >
+              {magnitudeIcons[key]} {group.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Menú hamburguesa para móviles */}
+        <div className="nav-mobile">
+          <input type="checkbox" id="nav-toggle" className="nav-toggle" />
+          <label htmlFor="nav-toggle" className="nav-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+          
+          <div className="nav-mobile-menu">
+            <Link 
+              to="/" 
+              className={`nav-mobile-link ${location.pathname === '/' ? 'active' : ''}`}
+            >
+              🏠 Inicio
+            </Link>
             
             {Object.entries(UNIT_GROUPS).map(([key, group]) => (
-              <li key={key} className="nav-item">
-                <Link
-                  to={`/converter/${key}`}
-                  className={`nav-link ${location.pathname === `/converter/${key}` ? 'active' : ''}`}
-                  title={`Conversión de ${group.name}`}
-                >
-                  <i className={`${magnitudeIcons[key]} me-1`}></i>
-                  {group.name}
-                </Link>
-              </li>
+              <Link
+                key={key}
+                to={`/converter/${key}`}
+                className={`nav-mobile-link ${location.pathname === `/converter/${key}` ? 'active' : ''}`}
+              >
+                {magnitudeIcons[key]} {group.name}
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </nav>

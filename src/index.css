@@ -1,164 +1,11 @@
-/* Importar Bootstrap y Bootstrap Icons */
-@import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-
-/* Estilos personalizados mínimos para complementar Bootstrap */
-:root {
-  --primary-color: #0d6efd;
-  --secondary-color: #6c757d;
-  --success-color: #198754;
-  --danger-color: #dc3545;
-  --warning-color: #ffc107;
-  --info-color: #0dcaf0;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f8f9fa;
-  line-height: 1.6;
-}
-
-/* Efectos de hover para tarjetas */
-.hover-card {
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.hover-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15) !important;
-}
-
-.hover-card:hover .card-footer i {
-  animation: bounce 0.6s ease-in-out;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(0);
-  }
-  40% {
-    transform: translateX(5px);
-  }
-  60% {
-    transform: translateX(3px);
-  }
-}
-
-/* Utilidades adicionales */
-.shadow-custom {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
-}
-
-.border-radius-custom {
-  border-radius: 0.75rem !important;
-}
-
-/* Estilo para botones activos en el teclado */
-.btn:active {
-  transform: scale(0.95);
-}
-
-/* Responsive para el grid de magnitudes */
-@media (max-width: 576px) {
-  .card-body p.small {
-    font-size: 0.8rem;
-  }
-  
-  .display-3 {
-    font-size: 2rem !important;
-  }
-  
-  .fs-1 {
-    font-size: 1.5rem !important;
-  }
-}
-
-/* Scrollbar personalizada */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-/* Animaciones suaves */
-.fade-in {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.pulse-animation {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-/* Estilos para mejorar la legibilidad */
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-}
-
-/* Sticky sidebar mejorado */
-@media (min-width: 992px) {
-  .sticky-top {
-    position: sticky !important;
-    top: 120px !important;
-  }
-}
-
-/* Ajustes para botones de intercambio */
-.btn-outline-primary:hover {
-  transform: rotate(180deg);
-  transition: transform 0.3s ease;
-}
-
-/* Estilo para el display del teclado */
-.form-control[readonly] {
-  background-color: #e9ecef !important;
-  opacity: 1;
-}
-
-/* Mejoras para alertas */
-.alert {
-  border: none;
-  border-left: 4px solid;
-}
-
-.alert-info {
-  border-left-color: var(--info-color);
-}
-
-.alert-success {
-  border-left-color: var(--success-color);
-}
-
 /* Estilos globales para la calculadora SI */
 :root {
   /* Paleta de colores principal */
+  --primary-color: #3498db;
   --primary-dark: #2980b9;
   --secondary-color: #2c3e50;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
   --error-color: #e74c3c;
   
   /* Colores de fondo */
@@ -190,6 +37,7 @@ body {
   --spacing-xl: 32px;
   
   /* Tipografía */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -362,6 +210,26 @@ img {
 .pb-3 { padding-bottom: var(--spacing-md) !important; }
 .pb-4 { padding-bottom: var(--spacing-lg) !important; }
 .pb-5 { padding-bottom: var(--spacing-xl) !important; }
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: var(--border-radius-md);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: var(--border-radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
 
 /* Selección de texto */
 ::selection {
