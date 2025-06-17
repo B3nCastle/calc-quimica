@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import UnitConverter from './components/UnitConverter';
+import Credits from './components/Credits';
 import './App.css';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
             
             {/* Rutas para cada tipo de conversión */}
             <Route path="/converter/:magnitude" element={<UnitConverter />} />
+            
+            {/* Ruta de créditos */}
+            <Route path="/creditos" element={<Credits />} />
             
             {/* Ruta de fallback para páginas no encontradas */}
             <Route path="*" element={

@@ -1,0 +1,118 @@
+.credits-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px); /* Ajuste para el header y footer */
+  padding: 2rem;
+}
+
+.credits-card {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.credits-card:hover {
+  transform: translateY(-5px);
+}
+
+.credits-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.credits-header h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.credits-header h2 {
+  color: #34495e;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.credits-header h3 {
+  color: #7f8c8d;
+  font-size: 1.4rem;
+}
+
+.credits-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.team-section, .teacher-section {
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+}
+
+.team-section h3, .teacher-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.team-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.team-list li {
+  color: #34495e;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s ease;
+}
+
+.team-list li:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.teacher-section p {
+  color: #34495e;
+  font-size: 1.1rem;
+}
+
+.semester-info {
+  margin-top: 1rem;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .credits-card {
+    padding: 1rem;
+  }
+
+  .credits-header h1 {
+    font-size: 2rem;
+  }
+
+  .credits-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .credits-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .team-list li {
+    font-size: 1rem;
+  }
+} 

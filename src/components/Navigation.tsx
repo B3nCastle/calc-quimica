@@ -44,6 +44,13 @@ const Navigation: React.FC = () => {
               {magnitudeIcons[key]} {group.name}
             </Link>
           ))}
+
+          <Link 
+            to="/creditos" 
+            className={`nav-link ${location.pathname === '/creditos' ? 'active' : ''}`}
+          >
+            👥 Créditos
+          </Link>
         </div>
 
         {/* Menú hamburguesa para móviles */}
@@ -72,6 +79,13 @@ const Navigation: React.FC = () => {
                 {magnitudeIcons[key]} {group.name}
               </Link>
             ))}
+
+            <Link 
+              to="/creditos" 
+              className={`nav-mobile-link ${location.pathname === '/creditos' ? 'active' : ''}`}
+            >
+              👥 Créditos
+            </Link>
           </div>
         </div>
       </div>
