@@ -48,7 +48,7 @@ const UnitConverter: React.FC = () => {
         .replace(/³/g, '^3');
       
       // Evaluar potencias (formato: número^exponente)
-      processed = processed.replace(/(\d+(?:\.\d+)?)\^(\d+(?:\.\d+)?)/g, (match, base, exp) => {
+      processed = processed.replace(/(\d+(?:\.\d+)?)\^(\d+(?:\.\d+)?)/g, (_, base, exp) => {
         return Math.pow(parseFloat(base), parseFloat(exp)).toString();
       });
       
