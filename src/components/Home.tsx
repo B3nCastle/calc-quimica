@@ -1,142 +1,128 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { UNIT_GROUPS } from '../constants/units';
+import { Beaker, Sparkles, Scale, PieChart, FlaskConical, Info, Lightbulb, BookOpen, CheckCircle2, ArrowRight, Atom } from 'lucide-react';
+import { CHEMISTRY_SECTIONS } from '../constants/chemistry';
+import { getIcon } from '../utils/icons';
 import './Home.css';
 
 const Home: React.FC = () => {
-  // Iconos para cada magnitud
-  const magnitudeIcons: Record<string, string> = {
-    longitud: '📏',
-    masa: '⚖️',
-    tiempo: '⏱️',
-    volumen: '🧪',
-    densidad: '🔬',
-    presion: '🌡️',
-    fuerza: '💪',
-    energia: '⚡'
-  };
-
-  // Descripciones para cada magnitud
-  const magnitudeDescriptions: Record<string, string> = {
-    longitud: 'Convierte entre metros, kilómetros, centímetros, yardas, pulgadas y más',
-    masa: 'Convierte entre kilogramos, gramos, toneladas, miligramos y microgramos',
-    tiempo: 'Convierte entre segundos, minutos, horas y milisegundos',
-    volumen: 'Convierte entre metros cúbicos, litros, galones, mililitros y microlitros',
-    densidad: 'Convierte entre kg/m³, g/cm³, g/mL, kg/L y otras unidades de densidad',
-    presion: 'Convierte entre pascal, atmósferas, mmHg, psi, torr y bar',
-    fuerza: 'Convierte entre newton, kilonewton, dina, kilogramo-fuerza y micronewton',
-    energia: 'Convierte entre julios, kilojulios, calorías, kilocalorías y vatios-hora'
-  };
-
   return (
     <div className="home">
       <div className="home-header">
-        <h1>🧮 Calculadora del Sistema Internacional (SI)</h1>
+        <div className="header-icon-wrapper">
+          <Beaker className="header-main-icon" />
+        </div>
+        <h1>Calculadora de Química</h1>
         <p className="home-subtitle">
-          Convierte fácilmente entre las diferentes unidades del Sistema Internacional de Unidades
+          Calculadora especializada en moles, masa molar, composición porcentual y fórmulas empíricas y moleculares
         </p>
         <p className="home-description">
-          Esta calculadora está basada en las definiciones oficiales del SI y utiliza factores de 
-          conversión exactos. Incluye un teclado integrado para facilitar la entrada de valores 
-          numéricos y soporte para notación científica. Abarca las 8 magnitudes físicas fundamentales 
-          más utilizadas en ciencia e ingeniería.
+          Esta calculadora está diseñada para resolver ejercicios de química relacionados con masas y fórmulas empíricas. 
+          Incluye información detallada basada en definiciones científicas, fórmulas y ejemplos prácticos. 
+          Ideal para estudiantes y profesionales de química que necesitan realizar cálculos precisos.
         </p>
       </div>
 
       <div className="magnitude-grid">
-        {Object.entries(UNIT_GROUPS).map(([key, group]) => (
+        {Object.entries(CHEMISTRY_SECTIONS).map(([key, section]) => (
           <Link 
             key={key} 
-            to={`/converter/${key}`} 
+            to={`/chemistry/${key}`} 
             className="magnitude-card"
-            aria-label={`Ir a conversión de ${group.name.toLowerCase()}`}
+            aria-label={`Ir a ${section.name.toLowerCase()}`}
           >
             <div className="card-icon">
-              {magnitudeIcons[key]}
+              {getIcon(section.icon, { size: 32 })}
             </div>
             <div className="card-content">
-              <h3>{group.name}</h3>
+              <h3>{section.name}</h3>
               <p className="card-description">
-                {magnitudeDescriptions[key]}
+                {section.description}
               </p>
-              <div className="unit-count">
-                {Object.keys(group.units).length} unidades disponibles
-              </div>
-              <div className="unit-list">
-                {Object.values(group.units).slice(0, 3).map((unit, index) => (
-                  <span key={index} className="unit-badge">
-                    {unit.symbol}
-                  </span>
-                ))}
-                {Object.keys(group.units).length > 3 && (
-                  <span className="unit-badge more">
-                    +{Object.keys(group.units).length - 3}
-                  </span>
-                )}
-              </div>
             </div>
-            <div className="card-arrow">→</div>
+            <div className="card-arrow">
+              <ArrowRight size={20} />
+            </div>
           </Link>
         ))}
       </div>
 
       <div className="features-section">
-        <h2>✨ Características principales</h2>
+        <h2>
+          <Sparkles className="section-title-icon" />
+          Características principales
+        </h2>
         <div className="features-grid">
           <div className="feature-item">
-            <div className="feature-icon">🎯</div>
-            <h4>Precisión exacta</h4>
-            <p>Utiliza los factores de conversión oficiales del Sistema Internacional</p>
+            <div className="feature-icon">
+              <Beaker size={28} />
+            </div>
+            <h4>Cálculos de Moles</h4>
+            <p>Calcula moles a partir de masa y masa molar con precisión</p>
           </div>
           <div className="feature-item">
-            <div className="feature-icon">🔢</div>
-            <h4>Teclado integrado</h4>
-            <p>Interfaz táctil con soporte para números, decimales y potencias</p>
+            <div className="feature-icon">
+              <Atom size={28} />
+            </div>
+            <h4>Número de Avogadro</h4>
+            <p>Convierte entre moles y número de partículas (átomos, moléculas)</p>
           </div>
           <div className="feature-item">
-            <div className="feature-icon">🔄</div>
-            <h4>Conversión inteligente</h4>
-            <p>Evita seleccionar la misma unidad en origen y destino automáticamente</p>
+            <div className="feature-icon">
+              <Scale size={28} />
+            </div>
+            <h4>Masa Molar</h4>
+            <p>Calcula la masa molar de cualquier compuesto químico</p>
           </div>
           <div className="feature-item">
-            <div className="feature-icon">📱</div>
-            <h4>Diseño responsivo</h4>
-            <p>Funciona perfectamente en dispositivos móviles, tablets y escritorio</p>
+            <div className="feature-icon">
+              <PieChart size={28} />
+            </div>
+            <h4>Composición Porcentual</h4>
+            <p>Determina el porcentaje en masa de cada elemento en un compuesto</p>
           </div>
           <div className="feature-item">
-            <div className="feature-icon">🧪</div>
-            <h4>8 magnitudes físicas</h4>
-            <p>Cubre longitud, masa, tiempo, volumen, densidad, presión, fuerza y energía</p>
+            <div className="feature-icon">
+              <FlaskConical size={28} />
+            </div>
+            <h4>Fórmulas Empíricas y Moleculares</h4>
+            <p>Calcula fórmulas empíricas y moleculares a partir de composición</p>
           </div>
           <div className="feature-item">
-            <div className="feature-icon">ℹ️</div>
-            <h4>Información detallada</h4>
-            <p>Muestra la fórmula de conversión, definiciones y aplicaciones prácticas</p>
+            <div className="feature-icon">
+              <Info size={28} />
+            </div>
+            <h4>Información Detallada</h4>
+            <p>Incluye definiciones, fórmulas y ejemplos de aplicación</p>
           </div>
         </div>
       </div>
 
       <div className="info-section">
-        <h2>📚 Sobre el Sistema Internacional</h2>
+        <h2>
+          <BookOpen className="section-title-icon" />
+          Sobre los Cálculos Químicos
+        </h2>
         <p>
-          El Sistema Internacional de Unidades (SI) es el sistema de medidas más ampliamente 
-          utilizado en el mundo. Está basado en siete unidades fundamentales que definen 
-          todas las demás unidades físicas.
+          Esta calculadora cubre los conceptos fundamentales de la química relacionados con masas y fórmulas. 
+          Todos los cálculos están basados en las definiciones oficiales del Sistema Internacional de Unidades 
+          y utilizan valores estándar de masas atómicas según IUPAC.
         </p>
         <p>
-          Esta calculadora implementa las conversiones para las magnitudes más importantes 
-          en ciencia e ingeniería: <strong>longitud, masa, tiempo, volumen, densidad, presión, 
-          fuerza y energía</strong>, utilizando las definiciones modernas basadas en constantes 
-          físicas fundamentales según los estándares internacionales.
+          Las secciones incluidas son: <strong>Moles, Número de Avogadro (átomos y moléculas), Masa Molar, 
+          Composición Porcentual y Centesimal, y Fórmulas Empíricas y Moleculares</strong>. 
+          Cada sección incluye información teórica, fórmulas y ejemplos prácticos para facilitar el aprendizaje.
         </p>
         <div className="magnitude-summary">
-          <h3>📋 Magnitudes incluidas:</h3>
+          <h3>
+            <CheckCircle2 className="section-title-icon" size={20} />
+            Secciones disponibles:
+          </h3>
           <div className="magnitude-list">
-            {Object.entries(UNIT_GROUPS).map(([key, group]) => (
+            {Object.entries(CHEMISTRY_SECTIONS).map(([key, section]) => (
               <div key={key} className="magnitude-item">
-                <span className="magnitude-icon">{magnitudeIcons[key]}</span>
-                <span className="magnitude-name">{group.name}</span>
-                <span className="magnitude-base">({group.baseUnit})</span>
+                <span className="magnitude-icon">{getIcon(section.icon, { size: 20 })}</span>
+                <span className="magnitude-name">{section.name}</span>
               </div>
             ))}
           </div>
@@ -145,12 +131,13 @@ const Home: React.FC = () => {
 
       <footer className="home-footer">
         <p>
-          💡 <strong>Consejo:</strong> Utiliza el teclado integrado para introducir valores. 
-          Puedes usar potencias como x², x³ y xⁿ para cálculos más complejos.
+          <Lightbulb className="footer-icon" size={18} />
+          <strong>Consejo:</strong> Utiliza el teclado integrado para introducir valores numéricos. 
+          Para fórmulas químicas, escribe los elementos con mayúscula inicial y los números como subíndices (ej: H2O, CO2).
         </p>
         <p>
-          🔬 <strong>Aplicaciones:</strong> Ideal para estudiantes, científicos, ingenieros 
-          y cualquier persona que necesite conversiones precisas de unidades.
+          <FlaskConical className="footer-icon" size={18} />
+          <strong>Ejemplo:</strong> Para calcular la masa molar del etileno (C₂H₄), ingresa "C2H4" en la sección de Masa Molar.
         </p>
       </footer>
     </div>

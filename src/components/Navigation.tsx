@@ -1,29 +1,19 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { UNIT_GROUPS } from '../constants/units';
+import { Beaker, Home, Users } from 'lucide-react';
+import { CHEMISTRY_SECTIONS } from '../constants/chemistry';
+import { getIcon } from '../utils/icons';
 import './Navigation.css';
 
 const Navigation: React.FC = () => {
   const location = useLocation();
 
-  // Iconos para cada magnitud
-  const magnitudeIcons: Record<string, string> = {
-    longitud: '📏',
-    masa: '⚖️',
-    tiempo: '⏱️',
-    volumen: '🧪',
-    densidad: '🔬',
-    presion: '🌡️',
-    fuerza: '💪',
-    energia: '⚡'
-  };
-
   return (
     <nav className="navigation">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-          <span className="logo-icon">🧮</span>
-          <span className="logo-text">SI Calculator</span>
+          <Beaker className="logo-icon" size={24} />
+          <span className="logo-text">Calculadora Química</span>
         </Link>
         
         <div className="nav-links">
@@ -31,17 +21,19 @@ const Navigation: React.FC = () => {
             to="/" 
             className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
           >
-            🏠 Inicio
+            <Home size={18} />
+            <span>Inicio</span>
           </Link>
           
-          {Object.entries(UNIT_GROUPS).map(([key, group]) => (
+          {Object.entries(CHEMISTRY_SECTIONS).map(([key, section]) => (
             <Link
               key={key}
-              to={`/converter/${key}`}
-              className={`nav-link ${location.pathname === `/converter/${key}` ? 'active' : ''}`}
-              title={`Conversión de ${group.name}`}
+              to={`/chemistry/${key}`}
+              className={`nav-link ${location.pathname === `/chemistry/${key}` ? 'active' : ''}`}
+              title={section.name}
             >
-              {magnitudeIcons[key]} {group.name}
+              {getIcon(section.icon, { size: 18 })}
+              <span>{section.name}</span>
             </Link>
           ))}
 
@@ -49,7 +41,8 @@ const Navigation: React.FC = () => {
             to="/creditos" 
             className={`nav-link ${location.pathname === '/creditos' ? 'active' : ''}`}
           >
-            👥 Créditos
+            <Users size={18} />
+            <span>Créditos</span>
           </Link>
         </div>
 
@@ -67,16 +60,18 @@ const Navigation: React.FC = () => {
               to="/" 
               className={`nav-mobile-link ${location.pathname === '/' ? 'active' : ''}`}
             >
-              🏠 Inicio
+              <Home size={18} />
+              <span>Inicio</span>
             </Link>
             
-            {Object.entries(UNIT_GROUPS).map(([key, group]) => (
+            {Object.entries(CHEMISTRY_SECTIONS).map(([key, section]) => (
               <Link
                 key={key}
-                to={`/converter/${key}`}
-                className={`nav-mobile-link ${location.pathname === `/converter/${key}` ? 'active' : ''}`}
+                to={`/chemistry/${key}`}
+                className={`nav-mobile-link ${location.pathname === `/chemistry/${key}` ? 'active' : ''}`}
               >
-                {magnitudeIcons[key]} {group.name}
+                {getIcon(section.icon, { size: 18 })}
+                <span>{section.name}</span>
               </Link>
             ))}
 
@@ -84,7 +79,8 @@ const Navigation: React.FC = () => {
               to="/creditos" 
               className={`nav-mobile-link ${location.pathname === '/creditos' ? 'active' : ''}`}
             >
-              👥 Créditos
+              <Users size={18} />
+              <span>Créditos</span>
             </Link>
           </div>
         </div>
